@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring.application:
+  name: Oris2sem
+
+logging:
+  enabled: true
+
+info:
+  app:
+    name: Task Manager
+    version: 1.0.0
+    description: Spring Boot CRUD application with Actuator
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
