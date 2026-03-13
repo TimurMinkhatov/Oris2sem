@@ -2,15 +2,13 @@ server:
   port: 8081
 
 spring:
-  profiles:
-    active: local
   application:
     name: oris_spring
   datasource:
-    url: jdbc:postgresql://localhost:5432/oris_spring
+    url: 'jdbc:postgresql://localhost:5432/oris_spring'
     username: postgres
     password: Nbvehrf2006
-    driver-class-name: org.postgresql.Driver
+    driverClassName: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10
       minimum-idle: 5

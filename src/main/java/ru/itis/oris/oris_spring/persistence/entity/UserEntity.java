@@ -1,6 +1,7 @@
-package ru.itis.entity;
+package ru.itis.oris.oris_spring.persistence.entity;
 
 import lombok.*;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -9,7 +10,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class UserEntity {
     private UUID id;
     private String name;
     private LocalDate birthDate;

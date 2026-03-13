@@ -1,21 +1,21 @@
-package ru.itis;
+package ru.itis.oris.oris_spring.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import ru.itis.entity.User;
-import ru.itis.service.UserService;
+import ru.itis.oris.oris_spring.persistence.entity.UserEntity;
+import ru.itis.oris.oris_spring.service.UserService;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService service;
 
     @GetMapping("/{id}")
-    public User getUser(@PathVariable("id") UUID id) {
+    public UserEntity getUser(@PathVariable("id") UUID id) {
         return service.get(id);
     }
 
