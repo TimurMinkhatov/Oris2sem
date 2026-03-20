@@ -1,11 +1,13 @@
 package ru.itis.oris.oris_spring.api;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.itis.oris.oris_spring.persistence.entity.UserEntity;
 import ru.itis.oris.oris_spring.service.UserService;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -22,5 +24,10 @@ public class UserController {
     @PostMapping
     public void saveUser(@RequestParam String name) {
         service.save(name, LocalDate.now());
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<List<UserEntity>> test() {
+        return ResponseEntity.ok(service.test());
     }
 }

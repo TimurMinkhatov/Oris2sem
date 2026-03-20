@@ -4,9 +4,11 @@ import io.micrometer.common.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.itis.oris.oris_spring.persistence.entity.UserEntity;
+import ru.itis.oris.oris_spring.persistence.entity.UserStatus;
 import ru.itis.oris.oris_spring.persistence.repository.UserRepository;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -22,12 +24,20 @@ public class UserService {
         UserEntity user = UserEntity.builder()
                 .name(name)
                 .birthDate(birthDate)
+                .status(UserStatus.REGISTERED)
                 .build();
 
         repository.save(user);
     }
 
     public UserEntity get(UUID id) {
-        return repository.getById(id).orElse(null);
+        return repository.findById(id)
+                .orElse(null);
+    }
+
+    public List<UserEntity> test() {
+        return repository.findAllByIdInAndBirthDateBetween(List.of(UUID.randomUUID()),
+                LocalDate.now(),
+                LocalDate.now());
     }
 }

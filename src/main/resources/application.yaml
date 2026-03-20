@@ -2,8 +2,10 @@ server:
   port: 8081
 
 spring:
-  profiles:
-    active: local
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
   application:
     name: oris_spring
   datasource:
