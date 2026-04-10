@@ -16,6 +16,12 @@ import java.util.List;
 @Table(name = "account")
 public class UserEntity extends OrisBaseEntity {
 
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
     private String name;
 
     private LocalDate birthDate;
@@ -23,6 +29,10 @@ public class UserEntity extends OrisBaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private UserStatus status;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private UserRole role;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
